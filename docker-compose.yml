@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  composer-crawler:
+    build: .
+    volumes:
+      - ./data:/data
+    command: ["-stats"]  # 默认获取统计信息，可以修改为其他命令行参数
+    
+  # 获取指定包信息的示例
+  get-package:
+    build: .
+    volumes:
+      - ./data:/data
+    command: ["-package", "symfony/console", "-output", "/data/symfony-console.json"]
+    
+  # 获取安全公告的示例
+  get-advisories:
+    build: .
+    volumes:
+      - ./data:/data
+    command: ["-advisories", "-output", "/data/advisories.json"]
+    
+  # 流行包示例
+  popular-packages:
+    build: .
+    volumes:
+      - ./data:/data
+    entrypoint: ["/bin/sh", "-c"]
+    command: 
+      - |
+        cd /app && 
+        go build -o /root/popular-packages examples/popular_packages/main.go && 
+        cd /root && 
+        ./popular-packages
+    
+  # 安全监控示例
+  security-monitor:
+    build: .
+    volumes:
+      - ./data:/data
+    entrypoint: ["/bin/sh", "-c"]
+    command: 
+      - |
+        cd /app && 
+        go build -o /root/security-monitor examples/security_monitor/main.go && 
+        cd /root && 
+        ./security-monitor 

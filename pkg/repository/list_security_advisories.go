@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/response"
+	"github.com/scagogogo/composer-crawler/pkg/domain"
 )
 
 // List security advisories
@@ -15,16 +15,16 @@ import (
 
 // ListSecurityAdvisories 查询给定时间之后被报告的漏洞
 // https://packagist.org/api/security-advisories/?updatedSince=2023-05-22 19:49:11
-func (x *Repository) ListSecurityAdvisories(ctx context.Context, updatedSince time.Time) (*response.AdvisoriesResponse, error) {
+func (x *Repository) ListSecurityAdvisories(ctx context.Context, updatedSince time.Time) (*domain.AdvisoriesResponse, error) {
 	targetUrl := fmt.Sprintf("%s/api/security-advisories/?updatedSince=%d", x.options.ServerUrl, updatedSince.UnixMilli())
-	return getJson[*response.AdvisoriesResponse](ctx, x, targetUrl)
+	return getJson[*domain.AdvisoriesResponse](ctx, x, targetUrl)
 }
 
 // ListAdvisories 获取给定包上的所有漏洞
 // https://packagist.org/api/security-advisories/?packages=craftcms/cms
-func (x *Repository) ListAdvisories(ctx context.Context, packageName string) ([]*response.Advisory, error) {
+func (x *Repository) ListAdvisories(ctx context.Context, packageName string) ([]*domain.Advisory, error) {
 	targetUrl := fmt.Sprintf("%s/api/security-advisories/?packages=%s", x.options.ServerUrl, packageName)
-	json, err := getJson[*response.AdvisoriesResponse](ctx, x, targetUrl)
+	json, err := getJson[*domain.AdvisoriesResponse](ctx, x, targetUrl)
 	if err != nil {
 		return nil, err
 	}

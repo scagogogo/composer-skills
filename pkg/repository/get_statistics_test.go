@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/scagogogo/composer-crawler/pkg/response"
+	"github.com/scagogogo/composer-crawler/pkg/domain"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -93,6 +93,6 @@ func TestRepository_Statistics(t *testing.T) {
 		assert.NoError(t, err)
 		assert.NotNil(t, stats)
 		// Verify default values when fields are missing
-		assert.Equal(t, response.Totals{}, stats.Totals)
+		assert.Equal(t, domain.Totals{}, stats.Totals)
 	})
 }
