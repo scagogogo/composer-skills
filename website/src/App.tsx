@@ -13,6 +13,8 @@ import AutoInstallSection from './sections/AutoInstallSection'
 import CoverageSection from './sections/CoverageSection'
 import QuickStartSection from './sections/QuickStartSection'
 import UseCasesSection from './sections/UseCasesSection'
+import TutorialsSection from './sections/TutorialsSection'
+import ShowcaseSection from './sections/ShowcaseSection'
 
 const App: React.FC = () => {
   return (
@@ -26,8 +28,10 @@ const App: React.FC = () => {
           <SDKComparisonSection />
           <SecuritySection />
           <AutoInstallSection />
-          <CoverageSection />
           <QuickStartSection />
+          <TutorialsSection />
+          <ShowcaseSection />
+          <CoverageSection />
           <UseCasesSection />
         </Layout>
       </AntApp>

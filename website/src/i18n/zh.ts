@@ -8,6 +8,7 @@ const zh = {
     github: 'GitHub',
   },
   hero: {
+    badge: '开源 · Go SDK · MIT 许可证',
     tagline: 'PHP Composer 生态缺失的 Go SDK',
     subtitle:
       '别再手动解析 exec.Command 的输出了。一个 import 就能获得类型化、经过测试的 API，覆盖 Packagist REST API 和所有 Composer CLI 命令，还自带零配置自动安装。',
@@ -333,6 +334,117 @@ scripts := comp.GetScripts()`,
     composer: 'Composer',
     license: 'MIT 许可证',
     copyright: '© 2024 Composer Skills. 基于 MIT 许可证发布。',
+  },
+  tutorials: {
+    title: '教程与指南',
+    subtitle: '循序渐进的指南，助你精通 Composer Skills。',
+    items: [
+      {
+        category: '入门',
+        categoryColor: '#4F46E5',
+        title: '你的第一次 Packagist 查询',
+        description: '5 分钟学会搜索包、获取详情和探索 Packagist API。',
+        difficulty: '入门',
+        readTime: '5 分钟',
+      },
+      {
+        category: 'Composer CLI',
+        categoryColor: '#0284C7',
+        title: '从 Go 管理 PHP 依赖',
+        description: '使用类型安全的 Go 方法以编程方式安装、更新和移除 Composer 包。',
+        difficulty: '进阶',
+        readTime: '12 分钟',
+      },
+      {
+        category: '安全',
+        categoryColor: '#E11D48',
+        title: '构建安全审计流水线',
+        description: '结合本地审计、远程公告和验证，创建完整的安全工作流。',
+        difficulty: '高级',
+        readTime: '15 分钟',
+      },
+      {
+        category: 'DevOps',
+        categoryColor: '#059669',
+        title: 'CI/CD 中自动检测与安装',
+        description: '在 GitHub Actions、GitLab CI 或任何流水线中设置零配置 Composer 安装。',
+        difficulty: '进阶',
+        readTime: '10 分钟',
+      },
+      {
+        category: '集成',
+        categoryColor: '#D97706',
+        title: 'Satis 私有仓库构建器',
+        description: '使用 Satis SDK 初始化、配置和构建私有 Composer 仓库。',
+        difficulty: '高级',
+        readTime: '18 分钟',
+      },
+      {
+        category: 'CLI 工具',
+        categoryColor: '#7C3AED',
+        title: 'CLI 快速参考',
+        description: '50+ CLI 子命令在日常开发工作流中的完整使用指南。',
+        difficulty: '入门',
+        readTime: '8 分钟',
+      },
+    ],
+  },
+  showcase: {
+    title: '实际案例',
+    subtitle: '看看开发者如何在生产环境中使用 Composer Skills。',
+    items: [
+      {
+        title: '安全扫描服务',
+        description: '一个监控 PHP 包漏洞的微服务。使用 Packagist 安全公告 API 和本地审计，为数百个项目生成实时安全报告。',
+        tags: ['安全', 'Packagist API', '微服务'],
+        code: `// 扫描所有项目的漏洞
+for _, project := range projects {
+    comp, _ := composer.New(composer.WithWorkingDir(project.Path))
+    result, _ := comp.AuditWithJSON()
+    if result.Found > 0 {
+        alertTeam(project.Name, result.Advisories)
+    }
+}`,
+      },
+      {
+        title: '依赖仪表盘',
+        description: '一个内部仪表盘，追踪组织中所有 PHP 项目的过期包、许可证合规性和依赖健康状况。',
+        tags: ['仪表盘', '过期包', '许可证'],
+        code: `// 收集依赖情报
+outdated, _ := comp.OutdatedPackages()
+licenses, _ := comp.LicensesWithFormat("json")
+abandoned, _ := comp.GetAbandonedPackagesFromLock()
+funding, _ := comp.FundWithJSON()
+
+dashboard.Update(project, DependencyReport{
+    Outdated:   outdated,
+    Licenses:   licenses,
+    Abandoned:  abandoned,
+    HasFunding: funding,
+})`,
+      },
+      {
+        title: 'CI/CD 自动化配置',
+        description: '一个 GitHub Action，在每次部署前自动检测安装 Composer、运行 install、审计并验证 composer.json。',
+        tags: ['CI/CD', '自动安装', '验证'],
+        code: `// 流水线中自动配置
+inst := installer.NewInstaller(installer.SmartConfig())
+if err := inst.Install(); err != nil {
+    return fmt.Errorf("配置失败: %w", err)
+}
+
+comp, _ := composer.New(composer.DefaultOptions())
+comp.Install(true, false)
+
+if result, _ := comp.AuditWithJSON(); result.Found > 0 {
+    return fmt.Errorf("安全审计未通过")
+}
+
+if _, err := comp.Validate(); err != nil {
+    return fmt.Errorf("composer.json 格式错误")
+}`,
+      },
+    ],
   },
 }
 

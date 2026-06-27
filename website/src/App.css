@@ -11,16 +11,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #1E293B;
   background: #FFFFFF;
+  overflow-x: hidden;
 }
 
 /* Section spacing */
 section {
-  padding: 80px 24px;
+  padding: 100px 24px;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   section {
-    padding: 48px 16px;
+    padding: 60px 16px;
   }
 }
 
@@ -64,4 +66,167 @@ pre {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Hero animated background */
+@keyframes heroGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-bg {
+  background: linear-gradient(-45deg, #4F46E5, #6366F1, #0284C7, #0EA5E9, #4F46E5);
+  background-size: 400% 400%;
+  animation: heroGradientShift 15s ease infinite;
+}
+
+/* Floating dots decoration */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.float-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-dot-slow {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* Card hover animation */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.12);
+}
+
+/* Section decoration */
+.section-alt {
+  position: relative;
+}
+
+.section-alt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  z-index: 0;
+}
+
+.section-alt > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Code block wrapper */
+.code-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.code-wrapper:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Stat card glow */
+.stat-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px 16px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+/* Badge style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Tutorial card */
+.tutorial-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.tutorial-card:hover {
+  border-color: #4F46E5;
+  box-shadow: 0 8px 30px rgba(79, 70, 229, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Showcase card */
+.showcase-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.showcase-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Scroll indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* Tab custom style */
+.ant-tabs-tab {
+  font-weight: 500 !important;
+  padding: 8px 20px !important;
+}
+
+/* Table custom style */
+.ant-table {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: #F8FAFC !important;
+  font-weight: 600 !important;
 }

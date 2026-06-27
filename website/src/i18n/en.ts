@@ -8,6 +8,7 @@ const en = {
     github: 'GitHub',
   },
   hero: {
+    badge: 'Open Source · Go SDK · MIT License',
     tagline: 'The Missing Go SDK for the PHP Composer Ecosystem',
     subtitle:
       'Stop parsing exec.Command output by hand. One import gives you a typed, tested API for both the Packagist REST API and every Composer CLI command, plus zero-config auto-installation.',
@@ -333,6 +334,117 @@ scripts := comp.GetScripts()`,
     composer: 'Composer',
     license: 'MIT License',
     copyright: '© 2024 Composer Skills. Released under the MIT License.',
+  },
+  tutorials: {
+    title: 'Tutorials & Guides',
+    subtitle: 'Step-by-step guides to help you master Composer Skills.',
+    items: [
+      {
+        category: 'Getting Started',
+        categoryColor: '#4F46E5',
+        title: 'Your First Packagist Query',
+        description: 'Learn how to search packages, get details, and explore the Packagist API in 5 minutes.',
+        difficulty: 'Beginner',
+        readTime: '5 min',
+      },
+      {
+        category: 'Composer CLI',
+        categoryColor: '#0284C7',
+        title: 'Managing PHP Dependencies from Go',
+        description: 'Install, update, and remove Composer packages programmatically with type-safe Go methods.',
+        difficulty: 'Intermediate',
+        readTime: '12 min',
+      },
+      {
+        category: 'Security',
+        categoryColor: '#E11D48',
+        title: 'Building a Security Audit Pipeline',
+        description: 'Combine local audit, remote advisories, and validation to create a complete security workflow.',
+        difficulty: 'Advanced',
+        readTime: '15 min',
+      },
+      {
+        category: 'DevOps',
+        categoryColor: '#059669',
+        title: 'Auto-Detect & Install in CI/CD',
+        description: 'Set up zero-config Composer installation in GitHub Actions, GitLab CI, or any pipeline.',
+        difficulty: 'Intermediate',
+        readTime: '10 min',
+      },
+      {
+        category: 'Integration',
+        categoryColor: '#D97706',
+        title: 'Satis Private Repository Builder',
+        description: 'Initialize, configure, and build private Composer repositories with the Satis SDK.',
+        difficulty: 'Advanced',
+        readTime: '18 min',
+      },
+      {
+        category: 'CLI Tool',
+        categoryColor: '#7C3AED',
+        title: 'CLI Quick Reference',
+        description: 'A complete guide to the 50+ CLI subcommands for daily development workflows.',
+        difficulty: 'Beginner',
+        readTime: '8 min',
+      },
+    ],
+  },
+  showcase: {
+    title: 'Real-World Examples',
+    subtitle: 'See how developers use Composer Skills in production.',
+    items: [
+      {
+        title: 'Security Scanner Service',
+        description: 'A microservice that monitors PHP packages for vulnerabilities. Uses Packagist advisory API and local audit to generate real-time security reports for hundreds of projects.',
+        tags: ['Security', 'Packagist API', 'Microservice'],
+        code: `// Scan all projects for vulnerabilities
+for _, project := range projects {
+    comp, _ := composer.New(composer.WithWorkingDir(project.Path))
+    result, _ := comp.AuditWithJSON()
+    if result.Found > 0 {
+        alertTeam(project.Name, result.Advisories)
+    }
+}`,
+      },
+      {
+        title: 'Dependency Dashboard',
+        description: 'An internal dashboard that tracks outdated packages, license compliance, and dependency health across all PHP projects in the organization.',
+        tags: ['Dashboard', 'Outdated', 'Licenses'],
+        code: `// Gather dependency intelligence
+outdated, _ := comp.OutdatedPackages()
+licenses, _ := comp.LicensesWithFormat("json")
+abandoned, _ := comp.GetAbandonedPackagesFromLock()
+funding, _ := comp.FundWithJSON()
+
+dashboard.Update(project, DependencyReport{
+    Outdated:   outdated,
+    Licenses:   licenses,
+    Abandoned:  abandoned,
+    HasFunding: funding,
+})`,
+      },
+      {
+        title: 'CI/CD Auto-Setup',
+        description: 'A GitHub Action that automatically detects and installs Composer, runs install, audit, and validates composer.json before every deployment.',
+        tags: ['CI/CD', 'Auto-Install', 'Validation'],
+        code: `// Auto-setup in pipeline
+inst := installer.NewInstaller(installer.SmartConfig())
+if err := inst.Install(); err != nil {
+    return fmt.Errorf("setup failed: %w", err)
+}
+
+comp, _ := composer.New(composer.DefaultOptions())
+comp.Install(true, false)
+
+if result, _ := comp.AuditWithJSON(); result.Found > 0 {
+    return fmt.Errorf("security audit failed")
+}
+
+if _, err := comp.Validate(); err != nil {
+    return fmt.Errorf("invalid composer.json")
+}`,
+      },
+    ],
   },
 }
 

@@ -1,11 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Row, Col, Table, Typography } from 'antd'
+import { Row, Col, Table, Tag } from 'antd'
 import { CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import SectionTitle from '../components/SectionTitle'
 import CodeBlock from '../components/CodeBlock'
-
-const { Title } = Typography
 
 const ProblemSection: React.FC = () => {
   const { t } = useTranslation()
@@ -21,9 +19,9 @@ const ProblemSection: React.FC = () => {
       dataIndex: 'pain',
       key: 'pain',
       render: (text: string) => (
-        <span>
-          <CloseCircleOutlined style={{ color: '#E11D48', marginRight: 8 }} />
-          {text}
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <CloseCircleOutlined style={{ color: '#E11D48', fontSize: 16 }} />
+          <span>{text}</span>
         </span>
       ),
     },
@@ -32,31 +30,55 @@ const ProblemSection: React.FC = () => {
       dataIndex: 'solution',
       key: 'solution',
       render: (text: string) => (
-        <span>
-          <CheckCircleOutlined style={{ color: '#059669', marginRight: 8 }} />
-          {text}
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <CheckCircleOutlined style={{ color: '#059669', fontSize: 16 }} />
+          <span>{text}</span>
         </span>
       ),
     },
   ]
 
   return (
-    <section id="problem" style={{ background: '#F8FAFC' }}>
+    <section id="problem" className="section-alt">
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('problem.title')} subtitle={t('problem.subtitle')} />
 
-        <Row gutter={[32, 32]} style={{ marginBottom: 48 }}>
+        <Row gutter={[32, 32]} style={{ marginBottom: 56 }}>
           <Col xs={24} md={12}>
-            <Title level={5} style={{ color: '#E11D48', marginBottom: 12 }}>
-              😩 {t('problem.oldWay')}
-            </Title>
-            <CodeBlock code={t('problem.oldCode')} />
+            <div
+              style={{
+                background: '#FEF2F2',
+                border: '1px solid #FECACA',
+                borderRadius: 16,
+                padding: '20px 24px 16px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <Tag color="error" style={{ margin: 0, fontWeight: 600 }}>✗ OLD</Tag>
+                <span style={{ color: '#991B1B', fontWeight: 600, fontSize: 14 }}>{t('problem.oldWay')}</span>
+              </div>
+              <div className="code-wrapper">
+                <CodeBlock code={t('problem.oldCode')} />
+              </div>
+            </div>
           </Col>
           <Col xs={24} md={12}>
-            <Title level={5} style={{ color: '#059669', marginBottom: 12 }}>
-              😊 {t('problem.newWay')}
-            </Title>
-            <CodeBlock code={t('problem.newCode')} />
+            <div
+              style={{
+                background: '#ECFDF5',
+                border: '1px solid #A7F3D0',
+                borderRadius: 16,
+                padding: '20px 24px 16px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <Tag color="success" style={{ margin: 0, fontWeight: 600 }}>✓ NEW</Tag>
+                <span style={{ color: '#065F46', fontWeight: 600, fontSize: 14 }}>{t('problem.newWay')}</span>
+              </div>
+              <div className="code-wrapper">
+                <CodeBlock code={t('problem.newCode')} />
+              </div>
+            </div>
           </Col>
         </Row>
 
@@ -65,7 +87,7 @@ const ProblemSection: React.FC = () => {
           dataSource={painPoints.map((item, i) => ({ ...item, key: i }))}
           pagination={false}
           bordered
-          style={{ borderRadius: 8 }}
+          style={{ borderRadius: 12, overflow: 'hidden' }}
         />
       </div>
     </section>
