@@ -11,7 +11,9 @@ export default defineConfig({
       output: {
         manualChunks: {
           'antd': ['antd', '@ant-design/icons'],
+          'charts': ['@ant-design/charts'],
           'highlighter': ['react-syntax-highlighter'],
+          'motion': ['framer-motion'],
           'react': ['react', 'react-dom'],
         },
       },

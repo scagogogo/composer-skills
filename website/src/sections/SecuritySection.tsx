@@ -1,31 +1,21 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Row, Col, Card, Image, Typography } from 'antd'
-import { SafetyOutlined, BugOutlined, FileProtectOutlined } from '@ant-design/icons'
+import { Row, Col } from 'antd'
+import { BugOutlined, SafetyOutlined, FileProtectOutlined } from '@ant-design/icons'
 import SectionTitle from '../components/SectionTitle'
 import CodeBlock from '../components/CodeBlock'
+import { RevealSection, StaggerGrid, StaggerItem } from '../components/ScrollReveal'
 
-const { Title } = Typography
+const securityIcons = [<BugOutlined />, <SafetyOutlined />, <FileProtectOutlined />]
+const securityColors = ['#DC2626', '#0891B2', '#2563EB']
 
 const SecuritySection: React.FC = () => {
   const { t } = useTranslation()
 
   const cards = [
-    {
-      icon: <BugOutlined />,
-      title: t('security.auditTitle'),
-      code: t('security.auditCode'),
-    },
-    {
-      icon: <SafetyOutlined />,
-      title: t('security.remoteTitle'),
-      code: t('security.remoteCode'),
-    },
-    {
-      icon: <FileProtectOutlined />,
-      title: t('security.validateTitle'),
-      code: t('security.validateCode'),
-    },
+    { title: t('security.auditTitle'), code: t('security.auditCode') },
+    { title: t('security.remoteTitle'), code: t('security.remoteCode') },
+    { title: t('security.validateTitle'), code: t('security.validateCode') },
   ]
 
   return (
@@ -33,37 +23,78 @@ const SecuritySection: React.FC = () => {
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('security.title')} subtitle={t('security.subtitle')} />
 
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <Image
-            src={`${import.meta.env.BASE_URL}images/security-features.png`}
-            alt="Security Features"
-            style={{ maxWidth: '90%' }}
-            preview={false}
-          />
-        </div>
-
-        <Row gutter={[24, 24]}>
-          {cards.map((card, index) => (
-            <Col xs={24} md={8} key={index}>
-              <Card
-                style={{
-                  height: '100%',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: 4,
-                }}
-                styles={{ body: { padding: 20 } }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 18, color: '#DC2626' }}>{card.icon}</span>
-                  <Title level={5} style={{ margin: 0, fontSize: 14 }}>
-                    {card.title}
-                  </Title>
+        {/* Security features overview — 3 metric bars */}
+        <RevealSection style={{ marginBottom: 36 }}>
+          <Row gutter={[16, 12]}>
+            {[
+              { label: 'Local Audit', pct: 100, color: '#16A34A' },
+              { label: 'Remote Advisories', pct: 100, color: '#0891B2' },
+              { label: 'Schema Validation', pct: 100, color: '#2563EB' },
+            ].map((item, i) => (
+              <Col xs={24} md={8} key={i}>
+                <div style={{ padding: '4px 0' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: '#334155' }}>{item.label}</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: item.color }}>✓</span>
+                  </div>
+                  <div style={{ height: 6, background: '#F1F5F9', borderRadius: 2, overflow: 'hidden' }}>
+                    <div
+                      style={{
+                        height: '100%',
+                        width: `${item.pct}%`,
+                        background: item.color,
+                        borderRadius: 2,
+                      }}
+                    />
+                  </div>
                 </div>
-                <CodeBlock code={card.code} />
-              </Card>
-            </Col>
-          ))}
-        </Row>
+              </Col>
+            ))}
+          </Row>
+        </RevealSection>
+
+        {/* Code cards */}
+        <StaggerGrid>
+          <Row gutter={[20, 20]}>
+            {cards.map((card, index) => {
+              const color = securityColors[index]
+              return (
+                <Col xs={24} md={8} key={index}>
+                  <StaggerItem>
+                    <div
+                      style={{
+                        height: '100%',
+                        border: `1px solid ${color}30`,
+                        borderRadius: 4,
+                        background: '#fff',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {/* Header bar */}
+                      <div
+                        style={{
+                          padding: '10px 16px',
+                          background: `${color}08`,
+                          borderBottom: `1px solid ${color}20`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}
+                      >
+                        <span style={{ fontSize: 16, color }}>{securityIcons[index]}</span>
+                        <span style={{ fontWeight: 600, fontSize: 14, color }}>{card.title}</span>
+                      </div>
+                      {/* Code */}
+                      <div style={{ padding: '0 12px 12px' }}>
+                        <CodeBlock code={card.code} />
+                      </div>
+                    </div>
+                  </StaggerItem>
+                </Col>
+              )
+            })}
+          </Row>
+        </StaggerGrid>
       </div>
     </section>
   )

@@ -67,7 +67,7 @@ pre {
 
 /* Flat stat card */
 .stat-card {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
   padding: 20px 16px;
   background: rgba(255, 255, 255, 0.06);
@@ -77,7 +77,7 @@ pre {
 .feature-card {
   border: 1px solid #E2E8F0;
   border-radius: 4px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .feature-card:hover {
@@ -90,7 +90,7 @@ pre {
   border-radius: 4px;
   padding: 24px;
   background: #fff;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .tutorial-card:hover {
@@ -136,4 +136,34 @@ pre {
 /* Collapse */
 .ant-collapse {
   border-radius: 0 !important;
+}
+
+/* Ant Design Charts container fix */
+.ant-charts {
+  overflow: visible !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Selection */
+::selection {
+  background: #2563EB;
+  color: #fff;
 }
