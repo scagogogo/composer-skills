@@ -1,0 +1,67 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1E293B;
+  background: #FFFFFF;
+}
+
+/* Section spacing */
+section {
+  padding: 80px 24px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 48px 16px;
+  }
+}
+
+/* Desktop / mobile menu visibility */
+.desktop-menu {
+  display: flex !important;
+}
+
+.mobile-menu-btn {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ant Design overrides */
+.ant-layout-header {
+  height: 64px;
+  line-height: 64px;
+}
+
+/* Code block styles */
+pre {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace !important;
+}
+
+/* Gradient text helper */
+.gradient-text {
+  background: linear-gradient(135deg, #4F46E5, #0284C7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

@@ -14,7 +14,7 @@ vendor/
 
 # 忽略数据目录和文件
 data/
-*.json
+/*.json
 
 # 忽略日志
 *.log
@@ -30,3 +30,7 @@ Thumbs.db
 
 # 忽略Docker生成的文件
 docker-compose.override.yml
+
+# Website build artifacts
+website/node_modules/
+website/dist/

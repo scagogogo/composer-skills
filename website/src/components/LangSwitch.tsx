@@ -1,0 +1,30 @@
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { Button } from 'antd'
+
+const LangSwitch: React.FC = () => {
+  const { i18n } = useTranslation()
+  const currentLang = i18n.language
+
+  const toggleLang = () => {
+    const newLang = currentLang === 'en' ? 'zh' : 'en'
+    i18n.changeLanguage(newLang)
+    localStorage.setItem('lang', newLang)
+  }
+
+  return (
+    <Button
+      size="small"
+      onClick={toggleLang}
+      style={{
+        fontWeight: 600,
+        borderRadius: 6,
+        border: '1px solid #E2E8F0',
+      }}
+    >
+      {currentLang === 'en' ? '中文' : 'EN'}
+    </Button>
+  )
+}
+
+export default LangSwitch
