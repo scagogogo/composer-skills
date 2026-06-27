@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/client"
+	"github.com/scagogogo/composer-skills/pkg/client"
 )
 
 // 一些流行的 Composer 包

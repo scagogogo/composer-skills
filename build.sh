@@ -18,8 +18,8 @@ mkdir -p build
 
 # 构建主程序
 echo -e "${YELLOW}正在构建主程序...${NC}"
-go build -o build/composer-crawler cmd/main.go
-echo -e "${GREEN}主程序构建完成: build/composer-crawler${NC}"
+go build -o build/composer-skills cmd/main.go
+echo -e "${GREEN}主程序构建完成: build/composer-skills${NC}"
 
 # 构建示例
 echo -e "${YELLOW}构建示例程序...${NC}"
@@ -44,6 +44,6 @@ echo -e "${GREEN}构建完成! 生成的可执行文件在 build/ 目录下${NC}
 echo -e "${BLUE}=============================================${NC}"
 
 echo -e "可执行以下命令运行:"
-echo -e "${YELLOW}主程序:${NC} ./build/composer-crawler -help"
+echo -e "${YELLOW}主程序:${NC} ./build/composer-skills -help"
 echo -e "${YELLOW}流行包查询:${NC} ./build/popular-packages"
 echo -e "${YELLOW}安全监控:${NC} ./build/security-monitor" 

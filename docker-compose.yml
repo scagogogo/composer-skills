@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  composer-crawler:
+  composer-skills:
     build: .
     volumes:
       - ./data:/data

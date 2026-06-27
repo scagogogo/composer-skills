@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 
 # 构建应用
-RUN CGO_ENABLED=0 GOOS=linux go build -o /composer-crawler cmd/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /composer-skills cmd/main.go
 
 # 使用轻量级镜像
 FROM alpine:latest
@@ -23,7 +23,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 # 从构建阶段复制二进制文件
-COPY --from=build /composer-crawler .
+COPY --from=build /composer-skills .
 
 # 创建用于保存数据的目录
 RUN mkdir -p /data
@@ -32,7 +32,7 @@ RUN mkdir -p /data
 ENV OUTPUT_DIR=/data
 
 # 容器启动时运行的命令
-ENTRYPOINT ["./composer-crawler"]
+ENTRYPOINT ["./composer-skills"]
 
 # 默认参数，使用时可以覆盖
 CMD ["--help"] 

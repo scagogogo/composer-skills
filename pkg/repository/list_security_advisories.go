@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 )
 
 // List security advisories

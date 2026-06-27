@@ -41,9 +41,9 @@ jobs:
       - name: Verify Examples Compile
         run: |
           echo "Compiling examples to verify they are correct..."
-          go build -o /dev/null ./examples/01_basic_setup/main.go
-          go build -o /dev/null ./examples/02_download_index/main.go
-          go build -o /dev/null ./examples/03_list_packages/main.go
-          go build -o /dev/null ./examples/04_get_statistics/main.go
-          go build -o /dev/null ./examples/05_security_advisories/main.go
+          go build -o /dev/null ./examples/basic_setup/main.go
+          go build -o /dev/null ./examples/download_index/main.go
+          go build -o /dev/null ./examples/list_packages/main.go
+          go build -o /dev/null ./examples/get_statistics/main.go
+          go build -o /dev/null ./examples/security_advisories/main.go
           echo "All examples compiled successfully!"

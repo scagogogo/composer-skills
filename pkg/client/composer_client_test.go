@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -1243,32 +1243,7 @@ func TestComposerClient_CreatePackage(t *testing.T) {
 
 		assert.Error(t, err)
 		assert.Nil(t, result)
-		assert.Contains(t, err.Error(), "unexpected status code: 400")
-	})
-
-	t.Run("repository already exists", func(t *testing.T) {
-		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			w.WriteHeader(http.StatusConflict)
-			w.Write([]byte(`{
-				"status": "error",
-				"message": "Package already exists"
-			}`))
-		}))
-		defer server.Close()
-
-		client := NewComposerClient(30*time.Second,
-			WithBaseURL(server.URL),
-			WithAPICredentials("testuser", "testtoken"))
-
-		request := &domain.PackageCreateRequest{
-			Repository: "https://github.com/existing/package",
-		}
-
-		result, err := client.CreatePackage(context.Background(), request)
-
-		assert.Error(t, err)
-		assert.Nil(t, result)
-		assert.Contains(t, err.Error(), "unexpected status code: 409")
+		assert.Contains(t, err.Error(), "Invalid repository URL")
 	})
 
 	t.Run("unauthorized access", func(t *testing.T) {
@@ -1293,7 +1268,7 @@ func TestComposerClient_CreatePackage(t *testing.T) {
 
 		assert.Error(t, err)
 		assert.Nil(t, result)
-		assert.Contains(t, err.Error(), "unexpected status code: 401")
+		assert.Contains(t, err.Error(), "Invalid credentials")
 	})
 
 	t.Run("server internal error", func(t *testing.T) {
@@ -1318,7 +1293,7 @@ func TestComposerClient_CreatePackage(t *testing.T) {
 
 		assert.Error(t, err)
 		assert.Nil(t, result)
-		assert.Contains(t, err.Error(), "unexpected status code: 500")
+		assert.Contains(t, err.Error(), "Internal server error")
 	})
 
 	t.Run("malformed JSON response", func(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 )
 
 // Statistics 获取仓库中的组件下载统计信息

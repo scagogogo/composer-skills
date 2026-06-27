@@ -1,0 +1,7 @@
+{
+    "name": "Default Dir Repo",
+    "homepage": "https://example.org",
+    "repositories": [],
+    "output-dir": "public",
+    "require-all": true
+}

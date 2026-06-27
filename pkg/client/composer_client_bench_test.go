@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 )
 
 // BenchmarkComposerClient_GetPackage 基准测试获取包信息

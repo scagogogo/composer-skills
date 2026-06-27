@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/client"
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/client"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 )
 
 // SecurityMonitor 表示安全监控器

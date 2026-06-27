@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/scagogogo/composer-crawler/pkg/domain"
+	"github.com/scagogogo/composer-skills/pkg/domain"
 )
 
 // ComposerClient 是 Composer API 的客户端

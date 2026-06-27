@@ -14,7 +14,7 @@
 1. 构建 Docker 镜像:
 
 ```bash
-docker build -t composer-crawler .
+docker build -t composer-skills .
 ```
 
 2. 运行容器获取统计信息:
@@ -24,19 +24,19 @@ docker build -t composer-crawler .
 mkdir -p data
 
 # 运行容器获取统计信息
-docker run -v $(pwd)/data:/data composer-crawler -stats -output /data/statistics.json
+docker run -v $(pwd)/data:/data composer-skills -stats -output /data/statistics.json
 ```
 
 3. 获取特定包信息:
 
 ```bash
-docker run -v $(pwd)/data:/data composer-crawler -package symfony/console -output /data/symfony-console.json
+docker run -v $(pwd)/data:/data composer-skills -package symfony/console -output /data/symfony-console.json
 ```
 
 4. 获取安全公告:
 
 ```bash
-docker run -v $(pwd)/data:/data composer-crawler -advisories -output /data/advisories.json
+docker run -v $(pwd)/data:/data composer-skills -advisories -output /data/advisories.json
 ```
 
 ### 使用 Docker Compose
@@ -46,7 +46,7 @@ docker run -v $(pwd)/data:/data composer-crawler -advisories -output /data/advis
 #### 获取统计信息
 
 ```bash
-docker-compose up composer-crawler
+docker-compose up composer-skills
 ```
 
 结果将保存在 `./data` 目录下。
@@ -90,7 +90,7 @@ docker-compose up security-monitor
 例如，要获取不同包的信息:
 
 ```bash
-docker run -v $(pwd)/data:/data composer-crawler -package laravel/framework -output /data/laravel-framework.json
+docker run -v $(pwd)/data:/data composer-skills -package laravel/framework -output /data/laravel-framework.json
 ```
 
 ## 故障排除
