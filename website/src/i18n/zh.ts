@@ -341,7 +341,7 @@ scripts := comp.GetScripts()`,
     items: [
       {
         category: '入门',
-        categoryColor: '#4F46E5',
+        categoryColor: '#2563EB',
         title: '你的第一次 Packagist 查询',
         description: '5 分钟学会搜索包、获取详情和探索 Packagist API。',
         difficulty: '入门',
@@ -381,7 +381,7 @@ scripts := comp.GetScripts()`,
       },
       {
         category: 'CLI 工具',
-        categoryColor: '#7C3AED',
+        categoryColor: '#0F172A',
         title: 'CLI 快速参考',
         description: '50+ CLI 子命令在日常开发工作流中的完整使用指南。',
         difficulty: '入门',

@@ -22,7 +22,7 @@ const iconMap = [
   <BuildOutlined />,
 ]
 
-const colorMap = ['#4F46E5', '#E11D48', '#0284C7', '#059669', '#D97706', '#7C3AED']
+const colorMap = ['#2563EB', '#DC2626', '#0891B2', '#16A34A', '#EA580C', '#0F172A']
 
 const UseCasesSection: React.FC = () => {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ const UseCasesSection: React.FC = () => {
   }>
 
   return (
-    <section id="use-cases" className="section-alt">
+    <section id="use-cases">
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('useCases.title')} subtitle={t('useCases.subtitle')} />
 
@@ -41,38 +41,35 @@ const UseCasesSection: React.FC = () => {
           {items.map((item, index) => (
             <Col xs={24} sm={12} lg={8} key={index}>
               <Card
-                hoverable
                 className="feature-card"
                 style={{
                   height: '100%',
-                  borderRadius: 16,
-                  border: '1px solid #E2E8F0',
                   background: '#fff',
                 }}
                 styles={{
-                  body: { padding: 28 },
+                  body: { padding: 20 },
                 }}
               >
                 <div
                   style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: 14,
-                    background: `${colorMap[index]}10`,
+                    width: 36,
+                    height: 36,
+                    borderRadius: 4,
+                    background: `${colorMap[index]}0A`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: 24,
+                    fontSize: 18,
                     color: colorMap[index],
-                    marginBottom: 20,
+                    marginBottom: 14,
                   }}
                 >
                   {iconMap[index]}
                 </div>
-                <Title level={5} style={{ marginBottom: 10, fontWeight: 700 }}>
+                <Title level={5} style={{ marginBottom: 8, fontWeight: 700, fontSize: 15 }}>
                   {item.title}
                 </Title>
-                <Paragraph style={{ color: '#64748B', marginBottom: 0, lineHeight: 1.6 }}>
+                <Paragraph style={{ color: '#64748B', marginBottom: 0, lineHeight: 1.6, fontSize: 14 }}>
                   {item.description}
                 </Paragraph>
               </Card>

@@ -11,16 +11,15 @@ interface SectionTitleProps {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ id, title, subtitle }) => {
   return (
-    <div style={{ textAlign: 'center', marginBottom: 56 }}>
-      {id && <div id={id} style={{ position: 'relative', top: -100 }} />}
+    <div style={{ textAlign: 'center', marginBottom: 48 }}>
+      {id && <div id={id} style={{ position: 'relative', top: -80 }} />}
       <Title
         level={2}
         style={{
-          marginBottom: 14,
+          marginBottom: 10,
           fontWeight: 800,
-          fontSize: 'clamp(24px, 3vw, 36px)',
-          letterSpacing: '-0.01em',
-          color: '#1E293B',
+          fontSize: 'clamp(22px, 2.8vw, 32px)',
+          color: '#0F172A',
         }}
       >
         {title}
@@ -28,9 +27,9 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ id, title, subtitle }) => {
       {subtitle && (
         <Paragraph
           style={{
-            fontSize: 16,
+            fontSize: 15,
             color: '#64748B',
-            maxWidth: 600,
+            maxWidth: 560,
             margin: '0 auto',
             lineHeight: 1.6,
           }}
@@ -40,11 +39,10 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ id, title, subtitle }) => {
       )}
       <div
         style={{
-          width: 48,
-          height: 4,
-          borderRadius: 2,
-          background: 'linear-gradient(135deg, #4F46E5, #0284C7)',
-          margin: '20px auto 0',
+          width: 32,
+          height: 3,
+          background: '#2563EB',
+          margin: '16px auto 0',
         }}
       />
     </div>

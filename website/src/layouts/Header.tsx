@@ -21,7 +21,6 @@ const Header: React.FC = () => {
           fontWeight: 500,
           fontSize: 14,
           color: '#475569',
-          transition: 'color 0.2s',
         }}
       >
         {t(`nav.${key}`)}
@@ -42,40 +41,31 @@ const Header: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 32px',
-        background: 'rgba(255, 255, 255, 0.92)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
-        height: 64,
+        padding: '0 24px',
+        background: '#fff',
+        borderBottom: '1px solid #E2E8F0',
+        height: 56,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <div
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: 8,
-            background: 'linear-gradient(135deg, #4F46E5, #6366F1)',
+            width: 28,
+            height: 28,
+            borderRadius: 4,
+            background: '#2563EB',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#fff',
             fontWeight: 800,
-            fontSize: 14,
+            fontSize: 13,
             fontFamily: 'monospace',
           }}
         >
           CS
         </div>
-        <span
-          style={{
-            fontWeight: 700,
-            fontSize: 18,
-            background: 'linear-gradient(135deg, #1E293B, #4F46E5)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
+        <span style={{ fontWeight: 700, fontSize: 16, color: '#0F172A' }}>
           Composer Skills
         </span>
       </div>
@@ -94,14 +84,14 @@ const Header: React.FC = () => {
         className="desktop-menu"
       />
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <LangSwitch />
         <Button
-          type="link"
+          type="text"
           icon={<GithubOutlined />}
           href="https://github.com/scagogogo/composer-skills"
           target="_blank"
-          style={{ fontSize: 20, color: '#475569' }}
+          style={{ fontSize: 18, color: '#475569' }}
         />
         <Button
           className="mobile-menu-btn"
@@ -117,28 +107,28 @@ const Header: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <div
               style={{
-                width: 28,
-                height: 28,
-                borderRadius: 6,
-                background: 'linear-gradient(135deg, #4F46E5, #6366F1)',
+                width: 24,
+                height: 24,
+                borderRadius: 3,
+                background: '#2563EB',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fff',
                 fontWeight: 800,
-                fontSize: 12,
+                fontSize: 11,
                 fontFamily: 'monospace',
               }}
             >
               CS
             </div>
-            <span style={{ fontWeight: 700 }}>Composer Skills</span>
+            <span style={{ fontWeight: 700, fontSize: 15 }}>Composer Skills</span>
           </div>
         }
         placement="right"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        width={280}
+        width={260}
       >
         <Menu
           mode="vertical"
@@ -151,7 +141,7 @@ const Header: React.FC = () => {
             ),
           }))}
         />
-        <div style={{ marginTop: 16, padding: '0 16px' }}>
+        <div style={{ marginTop: 12, padding: '0 16px' }}>
           <Button
             block
             icon={<GithubOutlined />}

@@ -341,7 +341,7 @@ scripts := comp.GetScripts()`,
     items: [
       {
         category: 'Getting Started',
-        categoryColor: '#4F46E5',
+        categoryColor: '#2563EB',
         title: 'Your First Packagist Query',
         description: 'Learn how to search packages, get details, and explore the Packagist API in 5 minutes.',
         difficulty: 'Beginner',
@@ -381,7 +381,7 @@ scripts := comp.GetScripts()`,
       },
       {
         category: 'CLI Tool',
-        categoryColor: '#7C3AED',
+        categoryColor: '#0F172A',
         title: 'CLI Quick Reference',
         description: 'A complete guide to the 50+ CLI subcommands for daily development workflows.',
         difficulty: 'Beginner',

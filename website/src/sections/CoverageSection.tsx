@@ -51,10 +51,10 @@ const CoverageSection: React.FC = () => {
       render: (text: string) => (
         <span
           style={{
-            background: '#EEF2FF',
-            color: '#4F46E5',
-            padding: '2px 10px',
-            borderRadius: 12,
+            background: '#EFF6FF',
+            color: '#2563EB',
+            padding: '1px 8px',
+            borderRadius: 2,
             fontWeight: 600,
             fontSize: 13,
           }}
@@ -73,7 +73,7 @@ const CoverageSection: React.FC = () => {
   const collapseItems = [
     {
       key: 'packagist',
-      label: <Title level={4} style={{ margin: 0 }}>{t('coverage.packagistTitle')}</Title>,
+      label: <Title level={4} style={{ margin: 0, fontSize: 15 }}>{t('coverage.packagistTitle')}</Title>,
       children: (
         <Table
           columns={packagistColumns}
@@ -86,7 +86,7 @@ const CoverageSection: React.FC = () => {
     },
     {
       key: 'composer',
-      label: <Title level={4} style={{ margin: 0 }}>{t('coverage.composerTitle')}</Title>,
+      label: <Title level={4} style={{ margin: 0, fontSize: 15 }}>{t('coverage.composerTitle')}</Title>,
       children: (
         <Table
           columns={composerColumns}
@@ -100,14 +100,14 @@ const CoverageSection: React.FC = () => {
   ]
 
   return (
-    <section id="coverage" style={{ background: '#F8FAFC' }}>
+    <section id="coverage" className="section-alt">
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('coverage.title')} subtitle={t('coverage.subtitle')} />
 
         <Collapse
           defaultActiveKey={['packagist', 'composer']}
           items={collapseItems}
-          style={{ background: '#fff', borderRadius: 8 }}
+          style={{ background: '#fff' }}
         />
       </div>
     </section>

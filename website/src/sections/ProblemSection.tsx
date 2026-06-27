@@ -20,7 +20,7 @@ const ProblemSection: React.FC = () => {
       key: 'pain',
       render: (text: string) => (
         <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <CloseCircleOutlined style={{ color: '#E11D48', fontSize: 16 }} />
+          <CloseCircleOutlined style={{ color: '#DC2626' }} />
           <span>{text}</span>
         </span>
       ),
@@ -31,7 +31,7 @@ const ProblemSection: React.FC = () => {
       key: 'solution',
       render: (text: string) => (
         <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <CheckCircleOutlined style={{ color: '#059669', fontSize: 16 }} />
+          <CheckCircleOutlined style={{ color: '#16A34A' }} />
           <span>{text}</span>
         </span>
       ),
@@ -43,19 +43,12 @@ const ProblemSection: React.FC = () => {
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('problem.title')} subtitle={t('problem.subtitle')} />
 
-        <Row gutter={[32, 32]} style={{ marginBottom: 56 }}>
+        <Row gutter={[24, 24]} style={{ marginBottom: 48 }}>
           <Col xs={24} md={12}>
-            <div
-              style={{
-                background: '#FEF2F2',
-                border: '1px solid #FECACA',
-                borderRadius: 16,
-                padding: '20px 24px 16px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                <Tag color="error" style={{ margin: 0, fontWeight: 600 }}>✗ OLD</Tag>
-                <span style={{ color: '#991B1B', fontWeight: 600, fontSize: 14 }}>{t('problem.oldWay')}</span>
+            <div style={{ border: '1px solid #FECACA', background: '#FEF2F2', borderRadius: 4, padding: '16px 20px 12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <Tag color="error" style={{ margin: 0, borderRadius: 2, fontWeight: 600 }}>OLD</Tag>
+                <span style={{ color: '#991B1B', fontWeight: 600, fontSize: 13 }}>{t('problem.oldWay')}</span>
               </div>
               <div className="code-wrapper">
                 <CodeBlock code={t('problem.oldCode')} />
@@ -63,17 +56,10 @@ const ProblemSection: React.FC = () => {
             </div>
           </Col>
           <Col xs={24} md={12}>
-            <div
-              style={{
-                background: '#ECFDF5',
-                border: '1px solid #A7F3D0',
-                borderRadius: 16,
-                padding: '20px 24px 16px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                <Tag color="success" style={{ margin: 0, fontWeight: 600 }}>✓ NEW</Tag>
-                <span style={{ color: '#065F46', fontWeight: 600, fontSize: 14 }}>{t('problem.newWay')}</span>
+            <div style={{ border: '1px solid #BBF7D0', background: '#F0FDF4', borderRadius: 4, padding: '16px 20px 12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <Tag color="success" style={{ margin: 0, borderRadius: 2, fontWeight: 600 }}>NEW</Tag>
+                <span style={{ color: '#166534', fontWeight: 600, fontSize: 13 }}>{t('problem.newWay')}</span>
               </div>
               <div className="code-wrapper">
                 <CodeBlock code={t('problem.newCode')} />
@@ -87,7 +73,6 @@ const ProblemSection: React.FC = () => {
           dataSource={painPoints.map((item, i) => ({ ...item, key: i }))}
           pagination={false}
           bordered
-          style={{ borderRadius: 12, overflow: 'hidden' }}
         />
       </div>
     </section>

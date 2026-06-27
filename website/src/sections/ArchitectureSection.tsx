@@ -32,7 +32,7 @@ const ArchitectureSection: React.FC = () => {
       key: 'pkg',
       width: '30%',
       render: (text: string) => (
-        <code style={{ background: '#F1F5F9', padding: '2px 8px', borderRadius: 4, fontSize: 13 }}>
+        <code style={{ background: '#F1F5F9', padding: '1px 6px', borderRadius: 2, fontSize: 13 }}>
           {text}
         </code>
       ),
@@ -40,15 +40,15 @@ const ArchitectureSection: React.FC = () => {
   ]
 
   return (
-    <section id="architecture" style={{ background: '#F8FAFC' }}>
+    <section id="architecture" className="section-alt">
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('architecture.title')} subtitle={t('architecture.subtitle')} />
 
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <Image
             src={`${import.meta.env.BASE_URL}images/architecture.png`}
             alt="Architecture"
-            style={{ maxWidth: '90%', borderRadius: 8 }}
+            style={{ maxWidth: '90%' }}
             preview={false}
           />
         </div>

@@ -1,21 +1,18 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Row, Col, Tag, Typography } from 'antd'
-import {
-  ClockCircleOutlined,
-  ReadOutlined,
-} from '@ant-design/icons'
+import { ClockCircleOutlined, ReadOutlined } from '@ant-design/icons'
 import SectionTitle from '../components/SectionTitle'
 
 const { Title, Paragraph } = Typography
 
 const difficultyColors: Record<string, string> = {
-  'Beginner': 'green',
-  '入门': 'green',
-  'Intermediate': 'blue',
-  '进阶': 'blue',
-  'Advanced': 'red',
-  '高级': 'red',
+  'Beginner': '#16A34A',
+  '入门': '#16A34A',
+  'Intermediate': '#2563EB',
+  '进阶': '#2563EB',
+  'Advanced': '#DC2626',
+  '高级': '#DC2626',
 }
 
 const TutorialsSection: React.FC = () => {
@@ -39,38 +36,46 @@ const TutorialsSection: React.FC = () => {
           {items.map((item, index) => (
             <Col xs={24} sm={12} lg={8} key={index}>
               <div className="tutorial-card">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                   <Tag
                     style={{
-                      background: `${item.categoryColor}10`,
+                      background: '#F8FAFC',
                       color: item.categoryColor,
-                      border: `1px solid ${item.categoryColor}20`,
+                      border: `1px solid ${item.categoryColor}30`,
                       fontWeight: 600,
-                      borderRadius: 6,
+                      borderRadius: 2,
                       margin: 0,
+                      fontSize: 12,
                     }}
                   >
                     {item.category}
                   </Tag>
                   <Tag
-                    color={difficultyColors[item.difficulty] || 'default'}
-                    style={{ borderRadius: 6, margin: 0, fontWeight: 500 }}
+                    style={{
+                      background: '#F8FAFC',
+                      color: difficultyColors[item.difficulty] || '#475569',
+                      border: `1px solid ${difficultyColors[item.difficulty] || '#475569'}30`,
+                      borderRadius: 2,
+                      margin: 0,
+                      fontWeight: 500,
+                      fontSize: 12,
+                    }}
                   >
                     {item.difficulty}
                   </Tag>
                 </div>
 
-                <Title level={5} style={{ marginBottom: 10, fontWeight: 700, fontSize: 16, lineHeight: 1.4 }}>
-                  <ReadOutlined style={{ marginRight: 8, color: '#4F46E5' }} />
+                <Title level={5} style={{ marginBottom: 8, fontWeight: 700, fontSize: 15, lineHeight: 1.4 }}>
+                  <ReadOutlined style={{ marginRight: 6, color: '#2563EB' }} />
                   {item.title}
                 </Title>
 
-                <Paragraph style={{ color: '#64748B', marginBottom: 16, lineHeight: 1.6, fontSize: 14 }}>
+                <Paragraph style={{ color: '#64748B', marginBottom: 12, lineHeight: 1.6, fontSize: 14 }}>
                   {item.description}
                 </Paragraph>
 
-                <div style={{ display: 'flex', alignItems: 'center', color: '#94A3B8', fontSize: 13 }}>
-                  <ClockCircleOutlined style={{ marginRight: 6 }} />
+                <div style={{ display: 'flex', alignItems: 'center', color: '#94A3B8', fontSize: 12 }}>
+                  <ClockCircleOutlined style={{ marginRight: 4 }} />
                   {item.readTime}
                 </div>
               </div>

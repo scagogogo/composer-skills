@@ -11,99 +11,99 @@ const Footer: React.FC = () => {
   return (
     <AntFooter
       style={{
-        background: 'linear-gradient(180deg, #0F172A, #1E293B)',
-        color: '#CBD5E1',
-        padding: '56px 24px 28px',
+        background: '#0F172A',
+        color: '#94A3B8',
+        padding: '48px 24px 24px',
       }}
     >
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 40,
-            marginBottom: 40,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: 32,
+            marginBottom: 32,
           }}
         >
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
               <div
                 style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 8,
-                  background: 'linear-gradient(135deg, #6366F1, #818CF8)',
+                  width: 24,
+                  height: 24,
+                  borderRadius: 3,
+                  background: '#2563EB',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#fff',
                   fontWeight: 800,
-                  fontSize: 14,
+                  fontSize: 11,
                   fontFamily: 'monospace',
                 }}
               >
                 CS
               </div>
-              <Text strong style={{ color: '#F8FAFC', fontSize: 17 }}>Composer Skills</Text>
+              <Text strong style={{ color: '#F8FAFC', fontSize: 15 }}>Composer Skills</Text>
             </div>
-            <Text style={{ color: '#94A3B8', lineHeight: 1.6 }}>{t('footer.description')}</Text>
+            <Text style={{ color: '#64748B', lineHeight: 1.6, fontSize: 14 }}>{t('footer.description')}</Text>
           </div>
           <div>
-            <Text strong style={{ color: '#F8FAFC', fontSize: 15, display: 'block', marginBottom: 16 }}>
+            <Text strong style={{ color: '#F8FAFC', fontSize: 14, display: 'block', marginBottom: 12 }}>
               {t('footer.resources')}
             </Text>
-            <Space direction="vertical" size={10}>
+            <Space direction="vertical" size={8}>
               <Link
                 href="https://github.com/scagogogo/composer-skills/blob/main/docs/skills/01-getting-started.md"
-                style={{ color: '#94A3B8', fontSize: 14 }}
+                style={{ color: '#64748B', fontSize: 13 }}
               >
                 {t('footer.docGettingStarted')}
               </Link>
               <Link
                 href="https://github.com/scagogogo/composer-skills/blob/main/docs/skills/02-packagist-api.md"
-                style={{ color: '#94A3B8', fontSize: 14 }}
+                style={{ color: '#64748B', fontSize: 13 }}
               >
                 {t('footer.docPackagist')}
               </Link>
               <Link
                 href="https://github.com/scagogogo/composer-skills/blob/main/docs/skills/05-security.md"
-                style={{ color: '#94A3B8', fontSize: 14 }}
+                style={{ color: '#64748B', fontSize: 13 }}
               >
                 {t('footer.docSecurity')}
               </Link>
               <Link
                 href="https://github.com/scagogogo/composer-skills/blob/main/docs/skills/11-cli-reference.md"
-                style={{ color: '#94A3B8', fontSize: 14 }}
+                style={{ color: '#64748B', fontSize: 13 }}
               >
                 {t('footer.docCLI')}
               </Link>
             </Space>
           </div>
           <div>
-            <Text strong style={{ color: '#F8FAFC', fontSize: 15, display: 'block', marginBottom: 16 }}>
+            <Text strong style={{ color: '#F8FAFC', fontSize: 14, display: 'block', marginBottom: 12 }}>
               {t('footer.community')}
             </Text>
-            <Space direction="vertical" size={10}>
-              <Link href="https://github.com/scagogogo/composer-skills" style={{ color: '#94A3B8', fontSize: 14 }}>
+            <Space direction="vertical" size={8}>
+              <Link href="https://github.com/scagogogo/composer-skills" style={{ color: '#64748B', fontSize: 13 }}>
                 {t('footer.github')}
               </Link>
-              <Link href="https://pkg.go.dev/github.com/scagogogo/composer-skills" style={{ color: '#94A3B8', fontSize: 14 }}>
+              <Link href="https://pkg.go.dev/github.com/scagogogo/composer-skills" style={{ color: '#64748B', fontSize: 13 }}>
                 {t('footer.goReference')}
               </Link>
-              <Link href="https://goreportcard.com/report/github.com/scagogogo/composer-skills" style={{ color: '#94A3B8', fontSize: 14 }}>
+              <Link href="https://goreportcard.com/report/github.com/scagogogo/composer-skills" style={{ color: '#64748B', fontSize: 13 }}>
                 {t('footer.goReport')}
               </Link>
             </Space>
           </div>
           <div>
-            <Text strong style={{ color: '#F8FAFC', fontSize: 15, display: 'block', marginBottom: 16 }}>
+            <Text strong style={{ color: '#F8FAFC', fontSize: 14, display: 'block', marginBottom: 12 }}>
               {t('footer.acknowledgments')}
             </Text>
-            <Space direction="vertical" size={10}>
-              <Link href="https://packagist.org" style={{ color: '#94A3B8', fontSize: 14 }}>
+            <Space direction="vertical" size={8}>
+              <Link href="https://packagist.org" style={{ color: '#64748B', fontSize: 13 }}>
                 {t('footer.packagist')}
               </Link>
-              <Link href="https://getcomposer.org" style={{ color: '#94A3B8', fontSize: 14 }}>
+              <Link href="https://getcomposer.org" style={{ color: '#64748B', fontSize: 13 }}>
                 {t('footer.composer')}
               </Link>
             </Space>
@@ -111,21 +111,13 @@ const Footer: React.FC = () => {
         </div>
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            paddingTop: 20,
+            borderTop: '1px solid #1E293B',
+            paddingTop: 16,
             textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: 12,
           }}
         >
-          <Text style={{ color: '#64748B', fontSize: 13 }}>
-            {t('footer.copyright')}
-          </Text>
           <Text style={{ color: '#475569', fontSize: 12 }}>
-            Built with ❤️ using Go + React + Ant Design
+            {t('footer.copyright')}
           </Text>
         </div>
       </div>

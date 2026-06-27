@@ -20,7 +20,7 @@ const LangSwitch: React.FC = () => {
       onClick={toggleLang}
       style={{
         fontWeight: 600,
-        borderRadius: 8,
+        borderRadius: 4,
         border: '1px solid #E2E8F0',
         color: '#475569',
         fontSize: 13,

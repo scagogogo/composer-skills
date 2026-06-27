@@ -26,7 +26,7 @@ const SDKComparisonSection: React.FC = () => {
     {
       title: (
         <span>
-          <CloudOutlined style={{ marginRight: 8, color: '#0284C7' }} />
+          <CloudOutlined style={{ marginRight: 6, color: '#0891B2' }} />
           {t('sdkComparison.packagistTitle')}
         </span>
       ),
@@ -37,7 +37,7 @@ const SDKComparisonSection: React.FC = () => {
     {
       title: (
         <span>
-          <CodeOutlined style={{ marginRight: 8, color: '#4F46E5' }} />
+          <CodeOutlined style={{ marginRight: 6, color: '#2563EB' }} />
           {t('sdkComparison.composerTitle')}
         </span>
       ),
@@ -52,27 +52,28 @@ const SDKComparisonSection: React.FC = () => {
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('sdkComparison.title')} subtitle={t('sdkComparison.subtitle')} />
 
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <Image
             src={`${import.meta.env.BASE_URL}images/sdk-comparison.png`}
             alt="SDK Comparison"
-            style={{ maxWidth: '90%', borderRadius: 8 }}
+            style={{ maxWidth: '90%' }}
             preview={false}
           />
         </div>
 
-        <Row gutter={[24, 24]} style={{ marginBottom: 32 }}>
+        <Row gutter={[24, 16]} style={{ marginBottom: 24 }}>
           <Col xs={24} md={12}>
             <Card
               style={{
                 textAlign: 'center',
-                background: 'linear-gradient(135deg, #E0F2FE, #BAE6FD)',
-                border: 'none',
-                borderRadius: 12,
+                background: '#F0F9FF',
+                border: '1px solid #BAE6FD',
+                borderRadius: 4,
               }}
+              styles={{ body: { padding: 20 } }}
             >
-              <CloudOutlined style={{ fontSize: 36, color: '#0284C7', marginBottom: 12 }} />
-              <Title level={4} style={{ color: '#0C4A6E', marginBottom: 8 }}>
+              <CloudOutlined style={{ fontSize: 28, color: '#0891B2', marginBottom: 8 }} />
+              <Title level={5} style={{ color: '#0C4A6E', marginBottom: 0, fontSize: 15 }}>
                 {t('sdkComparison.packagistTitle')}
               </Title>
             </Card>
@@ -81,13 +82,14 @@ const SDKComparisonSection: React.FC = () => {
             <Card
               style={{
                 textAlign: 'center',
-                background: 'linear-gradient(135deg, #E0E7FF, #C7D2FE)',
-                border: 'none',
-                borderRadius: 12,
+                background: '#EFF6FF',
+                border: '1px solid #BFDBFE',
+                borderRadius: 4,
               }}
+              styles={{ body: { padding: 20 } }}
             >
-              <CodeOutlined style={{ fontSize: 36, color: '#4F46E5', marginBottom: 12 }} />
-              <Title level={4} style={{ color: '#312E81', marginBottom: 8 }}>
+              <CodeOutlined style={{ fontSize: 28, color: '#2563EB', marginBottom: 8 }} />
+              <Title level={5} style={{ color: '#1E3A5F', marginBottom: 0, fontSize: 15 }}>
                 {t('sdkComparison.composerTitle')}
               </Title>
             </Card>

@@ -29,15 +29,15 @@ const SecuritySection: React.FC = () => {
   ]
 
   return (
-    <section id="security" style={{ background: '#F8FAFC' }}>
+    <section id="security" className="section-alt">
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <SectionTitle title={t('security.title')} subtitle={t('security.subtitle')} />
 
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <Image
             src={`${import.meta.env.BASE_URL}images/security-features.png`}
             alt="Security Features"
-            style={{ maxWidth: '90%', borderRadius: 8 }}
+            style={{ maxWidth: '90%' }}
             preview={false}
           />
         </div>
@@ -48,16 +48,14 @@ const SecuritySection: React.FC = () => {
               <Card
                 style={{
                   height: '100%',
-                  borderRadius: 12,
                   border: '1px solid #E2E8F0',
+                  borderRadius: 4,
                 }}
-                styles={{
-                  body: { padding: 24 },
-                }}
+                styles={{ body: { padding: 20 } }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                  <span style={{ fontSize: 20, color: '#E11D48' }}>{card.icon}</span>
-                  <Title level={5} style={{ margin: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                  <span style={{ fontSize: 18, color: '#DC2626' }}>{card.icon}</span>
+                  <Title level={5} style={{ margin: 0, fontSize: 14 }}>
                     {card.title}
                   </Title>
                 </div>

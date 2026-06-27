@@ -20,27 +20,27 @@ const ShowcaseSection: React.FC = () => {
   const collapseItems = items.map((item, index) => ({
     key: String(index),
     label: (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <div
           style={{
-            width: 40,
-            height: 40,
-            borderRadius: 10,
-            background: 'linear-gradient(135deg, #EEF2FF, #E0E7FF)',
+            width: 32,
+            height: 32,
+            borderRadius: 4,
+            background: '#EFF6FF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#4F46E5',
-            fontSize: 18,
+            color: '#2563EB',
+            fontSize: 16,
           }}
         >
           <AppstoreOutlined />
         </div>
         <div>
-          <Title level={5} style={{ margin: 0, fontSize: 15 }}>{item.title}</Title>
+          <Title level={5} style={{ margin: 0, fontSize: 14 }}>{item.title}</Title>
           <div style={{ display: 'flex', gap: 4, marginTop: 4 }}>
             {item.tags.map((tag, ti) => (
-              <Tag key={ti} style={{ fontSize: 11, borderRadius: 4, margin: 0, padding: '0 6px' }}>
+              <Tag key={ti} style={{ fontSize: 11, borderRadius: 2, margin: 0, padding: '0 4px' }}>
                 {tag}
               </Tag>
             ))}
@@ -50,7 +50,7 @@ const ShowcaseSection: React.FC = () => {
     ),
     children: (
       <div>
-        <Paragraph style={{ color: '#64748B', marginBottom: 16, lineHeight: 1.6 }}>
+        <Paragraph style={{ color: '#64748B', marginBottom: 12, lineHeight: 1.6, fontSize: 14 }}>
           {item.description}
         </Paragraph>
         <div className="code-wrapper">
@@ -68,7 +68,7 @@ const ShowcaseSection: React.FC = () => {
         <Collapse
           defaultActiveKey={['0']}
           items={collapseItems}
-          style={{ background: '#fff', borderRadius: 12, overflow: 'hidden' }}
+          style={{ background: '#fff' }}
         />
       </div>
     </section>
