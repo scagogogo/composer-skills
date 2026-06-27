@@ -27,23 +27,11 @@ const Footer: React.FC = () => {
         >
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-              <div
-                style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: 3,
-                  background: '#2563EB',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontWeight: 800,
-                  fontSize: 11,
-                  fontFamily: 'monospace',
-                }}
-              >
-                CS
-              </div>
+              <img
+                src={`${import.meta.env.BASE_URL}logo.svg`}
+                alt="Composer Skills"
+                style={{ width: 24, height: 24 }}
+              />
               <Text strong style={{ color: '#F8FAFC', fontSize: 15 }}>Composer Skills</Text>
             </div>
             <Text style={{ color: '#64748B', lineHeight: 1.6, fontSize: 14 }}>{t('footer.description')}</Text>

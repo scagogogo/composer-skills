@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Background rounded square -->
+  <rect x="4" y="4" width="120" height="120" rx="20" fill="#2563EB"/>
+
+  <!-- Subtle grid pattern (tech feel) -->
+  <line x1="44" y1="4" x2="44" y2="124" stroke="#3B82F6" stroke-width="0.5" opacity="0.3"/>
+  <line x1="84" y1="4" x2="84" y2="124" stroke="#3B82F6" stroke-width="0.5" opacity="0.3"/>
+  <line x1="4" y1="44" x2="124" y2="44" stroke="#3B82F6" stroke-width="0.5" opacity="0.3"/>
+  <line x1="4" y1="84" x2="124" y2="84" stroke="#3B82F6" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- "C" letter — bold geometric -->
+  <path d="M78 34C70 28 62 26 52 26C34 26 22 40 22 64C22 88 34 102 52 102C62 102 70 100 78 94"
+        stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" fill="none"/>
+
+  <!-- "S" letter — flowing from C's endpoint -->
+  <path d="M78 34C86 40 92 48 92 56C92 66 82 70 72 72C62 74 52 76 52 84C52 92 60 98 72 98C76 98 78 96 78 94"
+        stroke="#BFDBFE" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Small terminal cursor blink (bottom-right) -->
+  <rect x="96" y="100" width="12" height="3" rx="1" fill="#60A5FA" opacity="0.8"/>
+
+  <!-- Small dot accents (SDK nodes) -->
+  <circle cx="22" cy="64" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="92" cy="56" r="3" fill="#60A5FA" opacity="0.6"/>
+</svg>

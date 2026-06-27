@@ -47,24 +47,12 @@ const Header: React.FC = () => {
         height: 56,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <div
-          style={{
-            width: 28,
-            height: 28,
-            borderRadius: 4,
-            background: '#2563EB',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#fff',
-            fontWeight: 800,
-            fontSize: 13,
-            fontFamily: 'monospace',
-          }}
-        >
-          CS
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <img
+          src={`${import.meta.env.BASE_URL}logo.svg`}
+          alt="Composer Skills"
+          style={{ width: 32, height: 32 }}
+        />
         <span style={{ fontWeight: 700, fontSize: 16, color: '#0F172A' }}>
           Composer Skills
         </span>
@@ -105,23 +93,11 @@ const Header: React.FC = () => {
       <Drawer
         title={
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <div
-              style={{
-                width: 24,
-                height: 24,
-                borderRadius: 3,
-                background: '#2563EB',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                fontWeight: 800,
-                fontSize: 11,
-                fontFamily: 'monospace',
-              }}
-            >
-              CS
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}logo.svg`}
+              alt="Composer Skills"
+              style={{ width: 24, height: 24 }}
+            />
             <span style={{ fontWeight: 700, fontSize: 15 }}>Composer Skills</span>
           </div>
         }

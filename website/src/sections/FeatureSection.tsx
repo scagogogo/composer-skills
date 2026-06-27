@@ -33,7 +33,7 @@ const iconMap = [
 
 const accentColors = [
   '#2563EB', '#0891B2', '#DC2626', '#16A34A', '#EA580C',
-  '#0F172A', '#7C3AED', '#0284C7', '#D97706', '#059669',
+  '#0F172A', '#0284C7', '#D97706', '#059669', '#475569',
 ]
 
 const FeatureSection: React.FC = () => {
