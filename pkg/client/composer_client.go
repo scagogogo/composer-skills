@@ -85,10 +85,15 @@ func (c *ComposerClient) GetPackage(packageName string) (*domain.ComposerPackage
 		return nil, fmt.Errorf("failed to read response body: %w", err)
 	}
 
-	var packageInfo domain.PackageInfo
-	if err := json.Unmarshal(body, &packageInfo); err != nil {
+	// Packagist 的 /packages/{name}.json 返回的结构是 {"package": {...}}，
+	// 需要先解到外层包装结构，再取出里面的 PackageInfo。
+	var wrapper struct {
+		Package domain.PackageInfo `json:"package"`
+	}
+	if err := json.Unmarshal(body, &wrapper); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal package info: %w", err)
 	}
+	packageInfo := wrapper.Package
 
 	// 创建完整的包信息对象
 	now := time.Now()
@@ -167,10 +172,16 @@ func (c *ComposerClient) GetStatistics() (*domain.StatisticsResponse, error) {
 }
 
 // GetSecurityAdvisories 获取安全公告信息
+//
+// 使用 Packagist 的 /api/security-advisories/ 端点，通过 updatedSince=0
+// 获取全部安全公告。注意：旧的 /advisories.json 端点已被 Packagist 废弃
+// （返回 404），因此改为使用新端点。
 func (c *ComposerClient) GetSecurityAdvisories() (*domain.AdvisoriesResponse, error) {
-	url := fmt.Sprintf("%s/advisories.json", c.baseURL)
+	// 新端点要求至少带一个查询参数，否则返回 400。
+	// updatedSince=0 表示获取所有已知的公告。
+	requestURL := fmt.Sprintf("%s/api/security-advisories/?updatedSince=0", c.baseURL)
 
-	resp, err := c.httpClient.Get(url)
+	resp, err := c.httpClient.Get(requestURL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get advisories: %w", err)
 	}

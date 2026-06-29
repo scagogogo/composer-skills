@@ -58,16 +58,18 @@ func TestComposerClient_GetPackage(t *testing.T) {
 			assert.Equal(t, "/packages/symfony/console.json", r.URL.Path)
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(`{
-				"name": "symfony/console",
-				"description": "Eases the creation of beautiful and testable command line interfaces",
-				"time": "2023-01-01T00:00:00Z",
-				"maintainers": [],
-				"versions": {},
-				"type": "library",
-				"downloads": {
-					"total": 1000000,
-					"monthly": 50000,
-					"daily": 2000
+				"package": {
+					"name": "symfony/console",
+					"description": "Eases the creation of beautiful and testable command line interfaces",
+					"time": "2023-01-01T00:00:00Z",
+					"maintainers": [],
+					"versions": {},
+					"type": "library",
+					"downloads": {
+						"total": 1000000,
+						"monthly": 50000,
+						"daily": 2000
+					}
 				}
 			}`))
 		}))
@@ -168,7 +170,8 @@ func TestComposerClient_GetStatistics(t *testing.T) {
 func TestComposerClient_GetSecurityAdvisories(t *testing.T) {
 	t.Run("successful request", func(t *testing.T) {
 		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			assert.Equal(t, "/advisories.json", r.URL.Path)
+			assert.Equal(t, "/api/security-advisories/", r.URL.Path)
+			assert.Equal(t, "0", r.URL.Query().Get("updatedSince"))
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(`{
 				"advisories": {
