@@ -79,13 +79,7 @@ func (c *Composer) CreateProjectWithOptions(packageName string, directory string
 	args := []string{"create-project"}
 
 	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	if version != "" {
 		args = append(args, packageName+":"+version, directory)
@@ -168,13 +162,7 @@ func (c *Composer) InitProjectWithOptions(name string, description string, autho
 	}
 
 	// 添加其他选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	_, err := c.Run(args...)
 	return err

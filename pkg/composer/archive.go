@@ -82,13 +82,7 @@ func (c *Composer) ArchiveWithFormat(destination string, format string) (string,
 func (c *Composer) ArchiveWithOptions(destination string, options map[string]string) (string, error) {
 	args := []string{"archive", "--dir=" + destination}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -181,13 +175,7 @@ func (c *Composer) ArchivePackageWithOptions(packageName string, version string,
 
 	args = append(args, "--dir="+destination)
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

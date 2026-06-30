@@ -16,13 +16,7 @@ package composer
 func (c *Composer) OutdatedWithOptions(options map[string]string) (string, error) {
 	args := []string{"outdated"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -139,13 +133,7 @@ func (c *Composer) RequireMultiple(packages map[string]string, dev bool) error {
 func (c *Composer) DependsWithOptions(packageName string, options map[string]string) (string, error) {
 	args := []string{"depends", packageName}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -162,13 +150,7 @@ func (c *Composer) DependsWithOptions(packageName string, options map[string]str
 func (c *Composer) WhyWithOptions(packageName string, options map[string]string) (string, error) {
 	args := []string{"why", packageName}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -186,13 +168,7 @@ func (c *Composer) WhyWithOptions(packageName string, options map[string]string)
 func (c *Composer) WhyNotWithOptions(packageName string, version string, options map[string]string) (string, error) {
 	args := []string{"why-not", packageName, version}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -210,13 +186,7 @@ func (c *Composer) WhyNotWithOptions(packageName string, version string, options
 func (c *Composer) SuggestsWithOptions(options map[string]string) (string, error) {
 	args := []string{"suggests"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -246,13 +216,7 @@ func (c *Composer) SuggestsForPackage(packageName string) (string, error) {
 func (c *Composer) ReinstallMultipleWithOptions(packages []string, options map[string]string) error {
 	args := []string{"reinstall"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packages...)
 	_, err := c.Run(args...)
@@ -323,13 +287,7 @@ func (c *Composer) GlobalRemoveMultiple(packages []string) error {
 func (c *Composer) ShowWithOptions(options map[string]string) (string, error) {
 	args := []string{"show"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

@@ -207,13 +207,7 @@ func (c *Composer) HasFunding() (bool, error) {
 func (c *Composer) FundWithOptions(options map[string]string) (string, error) {
 	args := []string{"fund"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

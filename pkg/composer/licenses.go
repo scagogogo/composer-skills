@@ -15,13 +15,7 @@ func (c *Composer) LicensesWithOptions(options map[string]string) (string, error
 	args := []string{"licenses"}
 
 	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

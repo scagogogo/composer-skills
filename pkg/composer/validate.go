@@ -213,13 +213,7 @@ func (c *Composer) ValidateSchema() (string, error) {
 func (c *Composer) ValidateWithOptions(options map[string]string) (string, error) {
 	args := []string{"validate"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -461,14 +455,7 @@ func (c *Composer) ProhibitWithFormat(format string) (string, error) {
 func (c *Composer) ProhibitWithOptions(options map[string]string) (string, error) {
 	args := []string{"prohibit"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

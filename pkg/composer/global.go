@@ -98,14 +98,7 @@ func (c *Composer) GlobalDumpAutoload(optimize bool) error {
 func (c *Composer) GlobalRequireWithOptions(packageName string, version string, options map[string]string) error {
 	args := []string{"global", "require"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	if version != "" {
 		args = append(args, packageName+":"+version)
@@ -146,14 +139,7 @@ func (c *Composer) GlobalRequireWithOptions(packageName string, version string, 
 func (c *Composer) GlobalUpdateWithOptions(packages []string, options map[string]string) error {
 	args := []string{"global", "update"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packages...)
 
@@ -189,14 +175,7 @@ func (c *Composer) GlobalUpdateWithOptions(packages []string, options map[string
 func (c *Composer) GlobalRemoveWithOptions(packageName string, options map[string]string) error {
 	args := []string{"global", "remove"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packageName)
 

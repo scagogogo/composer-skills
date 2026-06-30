@@ -22,13 +22,7 @@ func (c *Composer) GenerateCompletionWithOptions(shell ShellType, options map[st
 	args := []string{"completion", string(shell)}
 
 	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

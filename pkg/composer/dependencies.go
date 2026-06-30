@@ -70,14 +70,7 @@ func (c *Composer) Install(noDev bool, optimize bool) error {
 func (c *Composer) InstallWithOptions(options map[string]string) error {
 	args := []string{"install"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	_, err := c.Run(args...)
 	return err
@@ -158,14 +151,7 @@ func (c *Composer) Update(packages []string, noDev bool) error {
 func (c *Composer) UpdateWithOptions(packages []string, options map[string]string) error {
 	args := []string{"update"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packages...)
 
@@ -238,14 +224,7 @@ func (c *Composer) DumpAutoload(optimize bool) error {
 func (c *Composer) DumpAutoloadWithOptions(options map[string]string) error {
 	args := []string{"dump-autoload"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	_, err := c.Run(args...)
 	return err

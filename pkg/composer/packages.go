@@ -310,14 +310,7 @@ func (c *Composer) OutdatedPackagesDirect() (string, error) {
 func (c *Composer) RequirePackageWithOptions(packageName string, version string, options map[string]string) error {
 	args := []string{"require"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	if version != "" {
 		args = append(args, packageName+":"+version)
@@ -390,14 +383,7 @@ func (c *Composer) BumpPackages(packages []string) error {
 func (c *Composer) BumpPackagesWithOptions(packages []string, options map[string]string) error {
 	args := []string{"bump"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packages...)
 	_, err := c.Run(args...)
@@ -490,14 +476,7 @@ func (c *Composer) BrowsePackage(packageName string) error {
 func (c *Composer) BrowsePackageWithOptions(packageName string, options map[string]string) error {
 	args := []string{"browse", packageName}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	_, err := c.Run(args...)
 	return err
@@ -734,16 +713,7 @@ func (c *Composer) SearchWithType(query string, packageType string) (string, err
 //	}
 func (c *Composer) RemoveWithOptions(packageName string, options map[string]string) error {
 	args := []string{"remove"}
-
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
-
+	args = append(args, buildOptionsArgs(options)...)
 	args = append(args, packageName)
 
 	_, err := c.Run(args...)
@@ -814,14 +784,7 @@ func (c *Composer) RemoveMultiple(packages []string, dev bool) error {
 func (c *Composer) ReinstallWithOptions(packageName string, options map[string]string) error {
 	args := []string{"reinstall"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	args = append(args, packageName)
 	_, err := c.Run(args...)

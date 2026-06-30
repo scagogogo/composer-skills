@@ -250,13 +250,7 @@ func (c *Composer) GetHighSeverityVulnerabilities() ([]Vulnerability, error) {
 func (c *Composer) AuditWithOptions(options map[string]string) (string, error) {
 	args := []string{"audit"}
 
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }

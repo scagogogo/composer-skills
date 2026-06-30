@@ -245,13 +245,7 @@ func (c *Composer) GetOutdatedInfo() (*OutdatedResult, error) {
 //   - error: 执行或解析错误
 func (c *Composer) GetOutdatedInfoWithOptions(options map[string]string) (*OutdatedResult, error) {
 	args := []string{"outdated", "--format", "json"}
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 	output, err := c.Run(args...)
 	if err != nil {
 		if output == "" {
@@ -323,13 +317,7 @@ func (c *Composer) GetAuditInfo() (*AuditInfoResult, error) {
 // GetAuditInfoWithOptions 使用选项执行安全审计并返回结构化结果
 func (c *Composer) GetAuditInfoWithOptions(options map[string]string) (*AuditInfoResult, error) {
 	args := []string{"audit", "--format", "json"}
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 	output, err := c.Run(args...)
 	if err != nil {
 		if output == "" {

@@ -9,14 +9,7 @@ func (c *Composer) Status() (string, error) {
 func (c *Composer) StatusWithOptions(options map[string]string) (string, error) {
 	args := []string{"status"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -30,14 +23,7 @@ func (c *Composer) Diagnose() (string, error) {
 func (c *Composer) DiagnoseWithOptions(options map[string]string) (string, error) {
 	args := []string{"diagnose"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
@@ -52,14 +38,7 @@ func (c *Composer) LocalExec(command string, args ...string) (string, error) {
 func (c *Composer) LocalExecWithOptions(command string, options map[string]string, args ...string) (string, error) {
 	cmdArgs := []string{"exec"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			cmdArgs = append(cmdArgs, "--"+key)
-		} else {
-			cmdArgs = append(cmdArgs, "--"+key+"="+value)
-		}
-	}
+	cmdArgs = append(cmdArgs, buildOptionsArgs(options)...)
 
 	cmdArgs = append(cmdArgs, command)
 	cmdArgs = append(cmdArgs, args...)
@@ -76,14 +55,7 @@ func (c *Composer) Check() (string, error) {
 func (c *Composer) CheckWithOptions(options map[string]string) (string, error) {
 	args := []string{"check"}
 
-	// 添加选项
-	for key, value := range options {
-		if value == "" {
-			args = append(args, "--"+key)
-		} else {
-			args = append(args, "--"+key+"="+value)
-		}
-	}
+	args = append(args, buildOptionsArgs(options)...)
 
 	return c.Run(args...)
 }
